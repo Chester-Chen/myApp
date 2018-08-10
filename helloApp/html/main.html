@@ -60,32 +60,44 @@
         <div class="right" onclick="personCenter();">个人中心</div>
     </header> 
     <nav id="nav">
-        <div class="menu selected">美食</div>
-        <div class="menu">电影</div>
-        <div class="menu">酒店</div>
-        <div class="menu">机票</div>
-        <div class="menu">景点</div>
+        <div class="menu selected" tapmode="selected">美食</div>
+        <div class="menu" tapmode="selected">电影</div>
+        <div class="menu" tapmode="selected">酒店</div>
+        <div class="menu" tapmode="selected">机票</div>
+        <div class="menu" tapmode="selected">景点</div>
     </nav>
 </body>
 <script type="text/javascript" src="../script/api.js"></script>
 <script type="text/javascript">
-       apiready = function(){
+        // 个人中心
+        function personCenter() {
+                api.openWin({
+                    name: 'personCenter',
+                    url: './login.html',
+                    pageParam: {
+                        name: 'value'
+                    }
+                });
+           }    
+        apiready = function(){
             var header = $api.byId('header');
             var nav = $api.byId('nav');
 
-            $api.fixStatusBar(header);
+            // $api.fixStatusBar(header);
 
             headerH = $api.offset(header).h;
             navH = $api.offset(nav).h;
-            // 获取所有menu类
+            // 获取所有menu类dom
             menus = $api.domAll(nav, '.menu');
-            var frames = [];
-            for (var i = 0; i < menus.length; i++) {
-                frames.push({
-                name: 'main_frame' + i, 
-                url: './main_frame.html',
-                });
-            }
+
+
+            // var frames = [];
+            // for (var i = 0; i < menus.length; i++) {
+            //     frames.push({
+            //     name: 'main_frame' + i, 
+            //     url: './main_frame.html',
+            //     });
+            // }
             api.openFrameGroup({
                 name: 'mainFrameGroups',
                 rect: {
@@ -95,7 +107,22 @@
                      h: 'auto'
                 },
                 scrollEnabled: true,
-                frames: frames
+                frames: [{
+                    name: 'food_frame', 
+                    url: './food_frame.html',
+                }, {
+                    name: 'movie_frame', 
+                    url: './movie_frame.html',
+                }, {
+                    name: 'hotel_frame', 
+                    url: './hotel_frame.html',
+                }, {
+                    name: 'plane_frame', 
+                    url: './plane_frame.html',
+                }, {
+                    name: 'view_frame', 
+                    url: './view_frame.html',
+                }]
             }, function(ret, err) {
                 setMenusSelected(ret.index);
             });
@@ -109,18 +136,9 @@
                     }
                 }
             }
-            // 个人中心
-            function personCenter() {
-                api.openWin({
-                    name: 'personCenter',
-                    url: './login.html',
-                    pageParam: {
-                        name: 'value'
-                    }
-                });
-           }   
+  
+    
+        };
 
-           
-        }
 </script>
 </html>

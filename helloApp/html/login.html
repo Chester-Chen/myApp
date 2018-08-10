@@ -37,6 +37,12 @@
             line-height: 50px;
             font-size: 20px; color: #fff; text-align: center;
         }
+        .loginBox {
+            width: 100%;
+            height: 80px;
+            border: 1px solid #bbb;
+            border-radius: 18px;
+        }
 	</style>
 </head>
 <body>
@@ -45,6 +51,14 @@
         <div class="left" onclick="api.closeWin();">返回</div>
         <div class="right" onclick="register();">注册</div>
     </header> 
+    <div class="loginBox">
+        <div class="user">
+            <input type="text" placeholder="账号：">
+        </div>
+        <div class="psw">
+            <input type="password" placeholder="密码：">
+        </div>
+    </div>
 </body>
 <script type="text/javascript" src="../script/api.js"></script>
 <script type="text/javascript">
@@ -58,5 +72,16 @@
            }
        });
    }
+   apiready = function(){
+       var qq = api.require('QQPlus');
+       qq.installed(function(ret,err){
+           if(ret.status){
+               alert('已安装qq!');
+           }else{
+               alert(JSON.stringify(err));
+           } 
+       });
+   }
+       
 </script>
 </html>
