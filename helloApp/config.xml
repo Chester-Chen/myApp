@@ -34,5 +34,8 @@
     	<param name="urlScheme" value="tencent1107594790" />
     	<param name="apiKey" value="1107594790" />
  	</feature>
-
+	<feature name="bMap">
+	    <param name="android_api_key" value="8OPUtcLF6486CljZsi1Nj8pOlDQwU6Co" />
+	    <param name="ios_api_key" value="AY3rthDPtQV87GnIGaqSchR9cL6ybBPP" />
+  	</feature>
 </widget>
