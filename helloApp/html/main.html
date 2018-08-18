@@ -68,77 +68,81 @@
     </nav>
 </body>
 <script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/NVTabBar.js"></script>
 <script type="text/javascript">
-        // 个人中心
-        function personCenter() {
-                api.openWin({
-                    name: 'personCenter',
-                    url: './login.html',
-                    pageParam: {
-                        name: 'value'
-                    }
-                });
-           }    
-        apiready = function(){
-            var header = $api.byId('header');
-            var nav = $api.byId('nav');
+    apiready = function(){
+        var NVTabBar = api.require('NVTabBar');
+        var header = $api.byId('header');
+        var nav = $api.byId('nav');
 
-            // $api.fixStatusBar(header);
+        NVTabBar_open();
+        // $api.fixStatusBar(header);
 
-            headerH = $api.offset(header).h;
-            navH = $api.offset(nav).h;
-            // 获取所有menu类dom
-            menus = $api.domAll(nav, '.menu');
+        headerH = $api.offset(header).h;
+        navH = $api.offset(nav).h;
+        // 获取所有menu类dom
+        menus = $api.domAll(nav, '.menu');
 
 
-            // var frames = [];
-            // for (var i = 0; i < menus.length; i++) {
-            //     frames.push({
-            //     name: 'main_frame' + i, 
-            //     url: './main_frame.html',
-            //     });
-            // }
-            api.openFrameGroup({
-                name: 'mainFrameGroups',
-                rect: {
-                     x: 0, 
-                     y: headerH + navH, 
-                     w: 'auto',
-                     h: 'auto'
-                },
-                scrollEnabled: true,
-                frames: [{
-                    name: 'map_frame', 
-                    url: './bmap_frame.html',
-                }, {
-                    name: 'movie_frame', 
-                    url: './movie_frame.html',
-                }, {
-                    name: 'hotel_frame', 
-                    url: './hotel_frame.html',
-                }, {
-                    name: 'plane_frame', 
-                    url: './plane_frame.html',
-                }, {
-                    name: 'view_frame', 
-                    url: './view_frame.html',
-                }]
-            }, function(ret, err) {
-                setMenusSelected(ret.index);
-            });
-            // 改变menus的选中状态
-            function setMenusSelected(index_) {
-                for (var i = 0; i < menus.length; i++) {
-                    if (index_ == i) {
-                        $api.addCls(menus[i], 'selected');
-                    } else {
-                        $api.removeCls(menus[i], 'selected');
-                    }
+        // var frames = [];
+        // for (var i = 0; i < menus.length; i++) {
+        //     frames.push({
+        //     name: 'main_frame' + i, 
+        //     url: './main_frame.html',
+        //     });
+        // }
+        api.openFrameGroup({
+            name: 'mainFrameGroups',
+            rect: {
+                 x: 0, 
+                 y: headerH + navH, 
+                 w: 'auto',
+                 h: 'auto'
+            },
+            scrollEnabled: true,
+            frames: [{
+                name: 'map_frame', 
+                url: './bmap_frame.html',
+            }, {
+                name: 'movie_frame', 
+                url: './movie_frame.html',
+            }, {
+                name: 'hotel_frame', 
+                url: './hotel_frame.html',
+            }, {
+                name: 'plane_frame', 
+                url: './plane_frame.html',
+            }, {
+                name: 'view_frame', 
+                url: './view_frame.html',
+            }]
+        }, function(ret, err) {
+            setMenusSelected(ret.index);
+        });
+        // 改变menus的选中状态
+        function setMenusSelected(index_) {
+            for (var i = 0; i < menus.length; i++) {
+                if (index_ == i) {
+                    $api.addCls(menus[i], 'selected');
+                } else {
+                    $api.removeCls(menus[i], 'selected');
                 }
             }
-  
-    
-        };
+        }
 
+
+    };
+
+ // 个人中心
+    function personCenter() {
+            api.openWin({
+                name: 'personCenter',
+                url: './login.html',
+                pageParam: {
+                    name: 'value'
+                }
+            });
+       }    
+    
 </script>
 </html>
