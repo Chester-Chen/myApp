@@ -52,6 +52,7 @@
         nav .menu.selected {
             font-size: 14px; color: #fff; font-weight: bolder;
         }
+        
 	</style>
 </head>
 <body>
@@ -66,43 +67,31 @@
         <div class="menu" tapmode="selected">机票</div>
         <div class="menu" tapmode="selected">景点</div>
     </nav>
+    <div onclick="openMap();" id="map">map</div>
 </body>
 <script type="text/javascript" src="../script/api.js"></script>
-<script type="text/javascript" src="../script/NVTabBar.js"></script>
+
 <script type="text/javascript">
     apiready = function(){
-        var NVTabBar = api.require('NVTabBar');
         var header = $api.byId('header');
         var nav = $api.byId('nav');
-
-        NVTabBar_open();
         // $api.fixStatusBar(header);
-
         headerH = $api.offset(header).h;
         navH = $api.offset(nav).h;
         // 获取所有menu类dom
         menus = $api.domAll(nav, '.menu');
-
-
-        // var frames = [];
-        // for (var i = 0; i < menus.length; i++) {
-        //     frames.push({
-        //     name: 'main_frame' + i, 
-        //     url: './main_frame.html',
-        //     });
-        // }
         api.openFrameGroup({
             name: 'mainFrameGroups',
             rect: {
                  x: 0, 
                  y: headerH + navH, 
                  w: 'auto',
-                 h: 'auto'
+                 h: 200
             },
             scrollEnabled: true,
             frames: [{
                 name: 'map_frame', 
-                url: './bmap_frame.html',
+                url: './food_frame.html',
             }, {
                 name: 'movie_frame', 
                 url: './movie_frame.html',
@@ -130,6 +119,147 @@
             }
         }
 
+        // 底部导航
+        function NVTabBar_open() {
+        var NVTabBar = api.require('NVTabBar');
+        NVTabBar.open({
+            styles: {
+                bg: 'rgba(200,200,200,1)',
+                h: 54,
+                dividingLine: {
+                    width: 0,
+                    color: '#000'
+                },
+                badge: {
+                    bgColor: '#f00',
+                    numColor: '#000',
+                    size: 6.0,
+                    centerY: 2
+                }
+            },
+            items: [{
+                w: api.winWidth / 5.0,
+                iconRect: {
+                    w: 25.0,
+                    h: 25.0,
+                },
+                icon: {
+                    normal: 'widget://image/NVTabBar/acti.png',
+                    highlight: 'widget://image/NVTabBar/actied.png',
+                    selected: 'widget://image/NVTabBar/actied.png'
+                },
+                title: {
+                    text: '动态',
+                    size: 12.0,
+                    normal: '#696969',
+                    selected: '#eb4f38',
+                    marginB: 6.0
+                }
+            }, {
+                w: api.winWidth / 5.0,
+                iconRect: {
+                    w: 25.0,
+                    h: 25.0,
+                },
+                icon: {
+                    normal: 'widget://image/NVTabBar/guan.png',
+                    highlight: 'widget://image/NVTabBar/guaned.png',
+                    selected: 'widget://image/NVTabBar/guaned.png'
+                },
+                title: {
+                    text: '发现',
+                    size: 12.0,
+                    normal: '#696969',
+                    selected: '#eb4f38',
+                    marginB: 6.0
+                }
+            }, {
+                w: api.winWidth / 5.0,
+                bg: {
+                    marginB: 0,
+                    image: 'rgba(200,200,200,0)'
+                },
+                iconRect: {
+                    w: 50,
+                    h: 50,
+                },
+                icon: {
+                    normal: 'widget://image/NVTabBar/yyuan.png',
+                    highlight: 'widget://image/NVTabBar/mai.png',
+                    selected: 'widget://image/NVTabBar/mai.png'
+                }
+            }, {
+                w: api.winWidth / 5.0,
+                iconRect: {
+                    w: 25.0,
+                    h: 25.0,
+                },
+                icon: {
+                    normal: 'widget://image/NVTabBar/bir.png',
+                    highlight: 'widget://image/NVTabBar/bired.png',
+                    selected: 'widget://image/NVTabBar/bired.png'
+                },
+                title: {
+                    text: '消息',
+                    size: 12.0,
+                    normal: '#696969',
+                    selected: '#eb4f38',
+                    marginB: 6.0
+                }
+            }, {
+                w: api.winWidth / 5.0,
+                iconRect: {
+                    w: 25.0,
+                    h: 25.0,
+                },
+                icon: {
+                    normal: 'widget://image/NVTabBar/fav.png',
+                    highlight: 'widget://image/NVTabBar/faved.png',
+                    selected: 'widget://image/NVTabBar/faved.png'
+                },
+                title: {
+                    text: '我的',
+                    size: 12.0,
+                    normal: '#696969',
+                    selected: '#eb4f38',
+                    marginB: 6.0
+                }
+            }],
+            selectedIndex: 0
+            }, function(ret, err) {
+                if (ret) {
+
+                    if (ret.eventType == "click" && ret.index == 0) {
+                        api.openFrame({
+                            name: 'kong',
+                            url: '',
+                            rect: {
+                                x: 0,
+                                y: 70,
+                                h: 200
+                            }
+                        });
+                    }
+                    if (ret.eventType == "click" && ret.index == 1) {
+                        api.openFrame({
+                            name: 'kong2',
+                            url: '',
+                            rect: {
+                                x: 0,
+                                y: 70,
+                                h: 200
+                            }
+                        });
+                    }
+                    var NVTabBar = api.require('NVTabBar');
+                    NVTabBar.setBadge({
+                        index: 4,
+                        badge: ''
+                    });
+                }
+            });
+        }
+        NVTabBar_open();
 
     };
 
@@ -143,6 +273,17 @@
                 }
             });
        }    
-    
+    function openMap() {
+        // body...
+        api.openWin({
+            name: 'map',
+            url: './bmap_frame.html',
+            pageParam: {
+                name: 'bmap'
+            }
+        });
+    }
+ 
+
 </script>
 </html>
