@@ -52,13 +52,16 @@
         nav .menu.selected {
             font-size: 14px; color: #fff; font-weight: bolder;
         }
-        
+        #map {
+            position: relative;
+            top: 300px;
+        }
 	</style>
 </head>
 <body>
 	<header id="header">
         <h1>滴滴美食</h1>
-        <div class="right" onclick="personCenter();">个人中心</div>
+        <div class="right" onclick="openMap();">个人中心</div>
     </header> 
     <nav id="nav">
         <div class="menu selected" tapmode="selected">地图</div>
