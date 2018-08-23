@@ -4,17 +4,31 @@
     <meta charset="utf-8">
     <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
     <title>title</title>
-    <link rel="stylesheet" type="text/css" href="api.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
     <style>
-        body{
-            
+      header {
+        position: relative;
+        width: 100%;
+        height: 50px;
+        background-color: #1E9FFF;
+        }
+        header .left {
+        position: absolute;
+        bottom: 0;
+        left: : 0;
+        width: 100px;
+        height: 50px;
+        line-height: 50px;
+        font-size: 20px; color: #fff; text-align: center;
         }
     </style>
 </head>
 <body>
-    
+    <header>
+        <div class="left" onclick="api.closeWin();">返回</div>
+    </header> 
 </body>
-<script type="text/javascript" src="api.js"></script>
+<script type="text/javascript" src="../script/api.js"></script>
 <script type="text/javascript">
     apiready = function(){
         // bmap
@@ -25,7 +39,7 @@
         map.open({
             rect: {
                 x: 0,
-                y: 0,
+                y: 50,
                 w: api.frameWidth,
                 h: api.frameHeight
             },

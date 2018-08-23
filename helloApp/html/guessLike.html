@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html style="font-size: 100px;>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <style>
+	 	.icon-list {
+            position: relative;
+            /*top: 120px;*/
+            width: 100%;
+            overflow: hidden;
+            font-size: .1rem;
+            color: #666;
+            padding: 0 10px 0 10px;
+            box-sizing: border-box;
+            border-top: 1px solid #DDD8CE;
+            border-bottom: 1px solid #DDD8CE;
+            background-color: #fff;
+        }
+        .icon {
+            display: inline-block;
+            width: 19%;
+            box-sizing: border-box;
+            padding: 5px;
+            text-align: center;
+        } 
+        .icon a {
+            width: .5rem;
+            height: .5rem;
+        }
+        .icon a img {
+            width: .4rem;
+            height: .4rem;
+        }
+        .guessLike {
+            position: relative;
+            border-top: 1px solid #DDD8CE;
+            margin-top: 5px;
+            margin-bottom: 0;
+            padding-left: .1rem;
+            background-color: #fff;
+            /*top: 120px;*/
+        }
+        .guessLike .guess-title {
+            font-size: .17rem;
+            margin-bottom: .1rem;
+            border-bottom: 1px solid #DDD8CE;
+        }
+        .guessLike .guess-item {
+            width: 100%;
+            height: 100px;
+            border-bottom: 1px solid #DDD8CE;
+            overflow: hidden;
+        }
+        .guessLike .guess-item a {
+            position: relative;
+            display: block;
+            height: 100%;
+            padding: .1rem;
+            text-overflow: ellipsis;
+            box-sizing: border-box;
+        }
+        .guessLike .guess-item .item-img {
+            display: inline-block;
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            top: 10px;
+            left: 10px;
+        }
+        .guessLike .guess-item .item-img img {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            top: 0;
+            left: 0;
+        }
+        .guessLike .guess-item .item-detail {
+            position: relative;
+            width: 75%;
+            height: 100%;
+            margin-left: 90px;
+            color: #666;
+        }
+        .guessLike .guess-item .item-detail .foods-title {
+            font-size: .2rem;
+            margin-bottom: .05rem;
+        }
+        .guessLike .guess-item .item-detail .foods-text {
+            font-size: .14rem;
+            margin-bottom: .1rem;
+            text-overflow: ellipsis;
+        }  
+        .guessLike .guess-item .item-detail .price {
+            position: relative;
+            font-size: .14rem;
+            font-weight: border-left: ;
+            margin-bottom: .1rem;
+         
+        }  
+        .guess-item .item-detail .price .strong {
+            font-size: .20rem;
+            color: #06c1ae;
+         
+        }   
+        .guess-item .item-detail .price .strong-text {
+            font-size: .17rem;
+            color: #06c1ae;
+        }
+        .guess-item .item-detail .price .strong-text {
+            font-size: .14rem;
+        }
+        .guess-item .item-detail .price .store-price {
+            font-size: .12rem;
+        }
+        .guess-item .item-detail .price .store-price::before {
+            content: '门市价:';
+            font-size: .14rem;
+        }
+        .guess-item .item-detail .price .sold {
+            position: absolute;
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+    <ul class="icon-list">
+        <li class="icon">
+            <a><img src="../image/hamberger-icon.png" alt=""><span>汉堡</span></a>
+        </li>
+        <li class="icon">
+            <a><img src="../image/hamberger-icon.png" alt=""><span>汉堡</span></a>
+        </li>
+         <li class="icon">
+            <a><img src="../image/hamberger-icon.png" alt=""><span>汉堡</span></a>
+        </li>
+         <li class="icon">
+            <a><img src="../image/hamberger-icon.png" alt=""><span>汉堡</span></a>
+        </li>
+         <li class="icon">
+            <a><img src="../image/hamberger-icon.png" alt=""><span>汉堡</span></a>
+        </li>
+           <li class="icon">
+            <a><img src="../image/hamberger-icon.png" alt=""><span>汉堡</span></a>
+        </li>
+        <li class="icon">
+            <a><img src="../image/hamberger-icon.png" alt=""><span>汉堡</span></a>
+        </li>
+         <li class="icon">
+            <a><img src="../image/hamberger-icon.png" alt=""><span>汉堡</span></a>
+        </li>
+         <li class="icon">
+            <a><img src="../image/hamberger-icon.png" alt=""><span>汉堡</span></a>
+        </li>
+         <li class="icon">
+            <a><img src="../image/hamberger-icon.png" alt=""><span>汉堡</span></a>
+        </li>
+    </ul>
+    <div class="guessLike">
+        <div class="guess-title">猜你喜欢</div>
+        <div class="guess-item">
+            <a href="#">
+                <div class="item-img">
+                    <img src="../image/guessPic.jpg" alt="guessLike">
+                </div>
+                <div class="item-detail">
+                    <div class="foods-title">99美味</div>
+                    <div class="foods-text">[蓬江区]套餐2选1，提供免费WiFi</div>
+                    <div class="price">
+                        <span class="strong">11.9</span>
+                        <span class="strong-text">元</span>
+                        <span class="store-price">999元</span>
+                        <span class="sold">已售:9999</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+     <div class="guess-item">
+            <a href="#">
+                <div class="item-img">
+                    <img src="../image/guessPic.jpg" alt="guessLike">
+                </div>
+                <div class="item-detail">
+                    <div class="foods-title">99美味</div>
+                    <div class="foods-text">[蓬江区]套餐2选1，提供免费WiFi</div>
+                    <div class="price">
+                        <span class="strong">11.9</span>
+                        <span class="strong-text">元</span>
+                        <span class="store-price">999元</span>
+                        <span class="sold">已售:9999</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+     <div class="guess-item">
+            <a href="#">
+                <div class="item-img">
+                    <img src="../image/guessPic.jpg" alt="guessLike">
+                </div>
+                <div class="item-detail">
+                    <div class="foods-title">99美味</div>
+                    <div class="foods-text">[蓬江区]套餐2选1，提供免费WiFi</div>
+                    <div class="price">
+                        <span class="strong">11.9</span>
+                        <span class="strong-text">元</span>
+                        <span class="store-price">999元</span>
+                        <span class="sold">已售:9999</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+     <div class="guess-item">
+            <a href="#">
+                <div class="item-img">
+                    <img src="../image/guessPic.jpg" alt="guessLike">
+                </div>
+                <div class="item-detail">
+                    <div class="foods-title">99美味</div>
+                    <div class="foods-text">[蓬江区]套餐2选1，提供免费WiFi</div>
+                    <div class="price">
+                        <span class="strong">11.9</span>
+                        <span class="strong-text">元</span>
+                        <span class="store-price">999元</span>
+                        <span class="sold">已售:9999</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+     <div class="guess-item">
+            <a href="#">
+                <div class="item-img">
+                    <img src="../image/guessPic.jpg" alt="guessLike">
+                </div>
+                <div class="item-detail">
+                    <div class="foods-title">99美味</div>
+                    <div class="foods-text">[蓬江区]套餐2选1，提供免费WiFi</div>
+                    <div class="price">
+                        <span class="strong">11.9</span>
+                        <span class="strong-text">元</span>
+                        <span class="store-price">999元</span>
+                        <span class="sold">已售:9999</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+     <div class="guess-item">
+            <a href="#">
+                <div class="item-img">
+                    <img src="../image/guessPic.jpg" alt="guessLike">
+                </div>
+                <div class="item-detail">
+                    <div class="foods-title">99美味</div>
+                    <div class="foods-text">[蓬江区]套餐2选1，提供免费WiFi</div>
+                    <div class="price">
+                        <span class="strong">11.9</span>
+                        <span class="strong-text">元</span>
+                        <span class="store-price">999元</span>
+                        <span class="sold">已售:9999</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+     <div class="guess-item">
+            <a href="#">
+                <div class="item-img">
+                    <img src="../image/guessPic.jpg" alt="guessLike">
+                </div>
+                <div class="item-detail">
+                    <div class="foods-title">99美味</div>
+                    <div class="foods-text">[蓬江区]套餐2选1，提供免费WiFi</div>
+                    <div class="price">
+                        <span class="strong">11.9</span>
+                        <span class="strong-text">元</span>
+                        <span class="store-price">999元</span>
+                        <span class="sold">已售:9999</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+     <div class="guess-item">
+            <a href="#">
+                <div class="item-img">
+                    <img src="../image/guessPic.jpg" alt="guessLike">
+                </div>
+                <div class="item-detail">
+                    <div class="foods-title">99美味</div>
+                    <div class="foods-text">[蓬江区]套餐2选1，提供免费WiFi</div>
+                    <div class="price">
+                        <span class="strong">11.9</span>
+                        <span class="strong-text">元</span>
+                        <span class="store-price">999元</span>
+                        <span class="sold">已售:9999</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+     <div class="guess-item">
+            <a href="#">
+                <div class="item-img">
+                    <img src="../image/guessPic.jpg" alt="guessLike">
+                </div>
+                <div class="item-detail">
+                    <div class="foods-title">99美味</div>
+                    <div class="foods-text">[蓬江区]套餐2选1，提供免费WiFi</div>
+                    <div class="price">
+                        <span class="strong">11.9</span>
+                        <span class="strong-text">元</span>
+                        <span class="store-price">999元</span>
+                        <span class="sold">已售:9999</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+     <div class="guess-item">
+            <a href="#">
+                <div class="item-img">
+                    <img src="../image/guessPic.jpg" alt="guessLike">
+                </div>
+                <div class="item-detail">
+                    <div class="foods-title">99美味</div>
+                    <div class="foods-text">[蓬江区]套餐2选1，提供免费WiFi</div>
+                    <div class="price">
+                        <span class="strong">11.9</span>
+                        <span class="strong-text">元</span>
+                        <span class="store-price">999元</span>
+                        <span class="sold">已售:9999</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript">
+   
+</script>
+</html>
