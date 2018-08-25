@@ -7,9 +7,6 @@
     <title>Hello APP</title>
     <link rel="stylesheet" type="text/css" href="../css/api.css" />
 	<style>
-        body {
-            background-color: #f0efed;
-        }
 	    header {
         position: relative;
         width: 100%;
@@ -295,9 +292,9 @@
             url: './guessLike.html',
             rect: {
                 x: 0,
-                y: gridH,
+                y: headerH + navH,
                 w: 'auto',
-                h: 'auto'
+                h: api.winHeight - headerH - navH - 54
             },
             pageParam: {
                 name: 'value'
@@ -305,9 +302,9 @@
             bounces: true
         });
     }
-    
+
     apiready = function(){
-        openBanner();
+        // openBanner();
         NVTabBar_open();
         openGuessLIke();
     };

@@ -5,7 +5,17 @@
     <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
     <title>title</title>
     <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" href="../layui/css/layui.css">
     <style>
+        body {
+            background-color: #f0efed;
+        }
+    	/* banner */
+    	#test1 img {
+    		width: 100%;
+    		height: 100%;
+    	}
+    	/* banner end */
 	 	.icon-list {
             position: relative;
             /*top: 120px;*/
@@ -44,7 +54,8 @@
             /*top: 120px;*/
         }
         .guessLike .guess-title {
-            font-size: .17rem;
+            font-size: .16rem;
+            padding: .05rem;
             margin-bottom: .1rem;
             border-bottom: 1px solid #DDD8CE;
         }
@@ -126,6 +137,15 @@
     </style>
 </head>
 <body>
+	<!-- lunbo -->
+	<div class="layui-carousel" id="test1">
+        <div carousel-item>
+          <div><img src="../image/banner0.png" alt=""></div>
+          <div><img src="../image/banner1.png" alt=""></div>
+          <div><img src="../image/banner2.jpg" alt=""></div>
+        </div>
+    </div>
+    <!-- lunbo end -->
     <ul class="icon-list">
         <li class="icon">
             <a><img src="../image/hamberger-icon.png" alt=""><span>汉堡</span></a>
@@ -143,19 +163,19 @@
             <a><img src="../image/hamberger-icon.png" alt=""><span>汉堡</span></a>
         </li>
            <li class="icon">
-            <a><img src="../image/hamberger-icon.png" alt=""><span>汉堡</span></a>
+            <a><img src="../image/chicken.png" alt=""><span>鸡腿</span></a>
         </li>
         <li class="icon">
-            <a><img src="../image/hamberger-icon.png" alt=""><span>汉堡</span></a>
+            <a><img src="../image/chicken.png" alt=""><span>鸡腿</span></a>
         </li>
          <li class="icon">
-            <a><img src="../image/hamberger-icon.png" alt=""><span>汉堡</span></a>
+            <a><img src="../image/chicken.png" alt=""><span>鸡腿</span></a>
         </li>
          <li class="icon">
-            <a><img src="../image/hamberger-icon.png" alt=""><span>汉堡</span></a>
+            <a><img src="../image/chicken.png" alt=""><span>鸡腿</span></a>
         </li>
          <li class="icon">
-            <a><img src="../image/hamberger-icon.png" alt=""><span>汉堡</span></a>
+            <a><img src="../image/chicken.png" alt=""><span>鸡腿</span></a>
         </li>
     </ul>
     <div class="guessLike">
@@ -332,7 +352,44 @@
         </div>
 </body>
 <script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../layui/layui.js"></script>
 <script type="text/javascript">
-   
+	layui.use('carousel', function(){
+	var carousel = layui.carousel;
+	//建造实例
+		carousel.render({
+	    elem: '#test1'
+	    ,width: '100%' //设置容器宽度
+	    ,height: '120px'
+	    ,arrow: 'none' //始终显示箭头
+	    ,indicator: 'none'
+	    //,anim: 'updown' //切换动画方式
+	  });
+	});
+
+    // banner
+    function openBanner () {
+        api.openFrame({
+            name: 'banner',
+            url: './banner.html',
+            rect: {
+                x: 0,
+                y: 90,
+                w: 'auto',
+                h: 120
+            },
+            pageParam: {
+                name: 'test'
+            },
+            bounces: true,
+            bgColor: 'rgba(0,0,0,0)',
+            vScrollBarEnabled: true,
+            hScrollBarEnabled: true
+        });
+    }
+    apiready = function(){
+        // openBanner();
+    }
+        
 </script>
 </html>
