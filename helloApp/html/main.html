@@ -191,13 +191,20 @@
                 image: 'rgba(200,200,200,0)'
             },
             iconRect: {
-                w: 50,
-                h: 50,
+                w: 25,
+                h: 25,
             },
             icon: {
                 normal: 'widget://image/NVTabBar/yyuan.png',
                 highlight: 'widget://image/NVTabBar/mai.png',
                 selected: 'widget://image/NVTabBar/mai.png'
+            },
+            title: {
+                text: '监控',
+                size: 12.0,
+                normal: '#696969',
+                selected: '#eb4f38',
+                marginB: 6.0
             }
         }, {
             w: api.winWidth / 5.0,
@@ -239,29 +246,7 @@
         selectedIndex: 0
         }, function(ret, err) {
             if (ret) {
-
-                if (ret.eventType == "click" && ret.index == 0) {
-                    api.openFrame({
-                        name: '',
-                        url: '',
-                        rect: {
-                            x: 0,
-                            y: 70,
-                            h: 200
-                        }
-                    });
-                }
                 if (ret.eventType == "click" && ret.index == 1) {
-                    // api.openFrame({
-                    //     name: '地图',
-                    //     url: 'bmap_frame.html',
-                    //     rect: {
-                    //         x: 0,
-                    //         y: headerH,
-                    //         w: 'auto',
-                    //         h: api.winHeight - headerH - navH - 54
-                    //     }
-                    // });
                     api.openWin({
                         name: '地图',
                         url: './bmap_frame.html',
@@ -270,7 +255,14 @@
                         }
                     });
                 }
-                var NVTabBar = api.require('NVTabBar');
+                if (ret.eventType == "click" && ret.index == 2) {
+                    api.openWin({
+                        name: 'jiankong',
+                        url: './jiankong.html',
+                        bounces: false,
+                    });
+                }
+                // 右上角的小红点
                 NVTabBar.setBadge({
                     index: 4,
                     badge: ''
@@ -304,7 +296,6 @@
     }
 
     apiready = function(){
-        // openBanner();
         NVTabBar_open();
         openGuessLIke();
     };

@@ -6,40 +6,93 @@
     <title>title</title>
     <link rel="stylesheet" type="text/css" href="../css/api.css"/>
     <style>
-      header {
-        position: relative;
-        width: 100%;
-        height: 50px;
-        background-color: #1E9FFF;
+        header {
+            position: relative;
+            width: 100%;
+            height: 50px;
+            background-color: #1E9FFF;
         }
         header .left {
-        position: absolute;
-        bottom: 0;
-        left: : 0;
-        width: 100px;
-        height: 50px;
-        line-height: 50px;
-        font-size: 20px; color: #fff; text-align: center;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100px;
+            height: 50px;
+            line-height: 50px;
+            font-size: 20px; color: #fff; text-align: center;
+        }
+        header .zoom {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 100px;
+            height: 50px;
+            line-height: 50px;
+            font-size: 20px; color: #fff; text-align: center;
+        }
+        header .zoom1 {
+            position: absolute;
+            bottom: 0;
+            right: 100px;
+            width: 100px;
+            height: 50px;
+            line-height: 50px;
+            font-size: 20px; color: #fff; text-align: center;
+        }
+        header .zoom2 {
+            position: absolute;
+            bottom: 0;
+            right: 200px;
+            width: 100px;
+            height: 50px;
+            line-height: 50px;
+            font-size: 20px; color: #fff; text-align: center;
+        }
+        .endDestin {
+            position: absolute;
+            top: 100px;
+            z-index: 999;
+            border: 1px #1E9FFF solid;
+        }
+        #end, button {
+            border: 1px #1E9FFF solid;
         }
     </style>
 </head>
 <body>
     <header>
         <div class="left" onclick="api.closeWin();">返回</div>
+        <div class="zoom" onclick="zoomIn();">放大</div>
+        <div class="zoom1" onclick="zoomOut();">缩小</div>
+        <div class="zoom2" onclick="openNavigation();">导航</div>
     </header> 
+    <div class="endDestin">
+        <div>
+            <input id="end" type="text" placeholder="输入终点位置" value="北京南站">
+            <button id="btn">开始导航</button>
+        </div>
+    </div>
 </body>
 <script type="text/javascript" src="../script/api.js"></script>
 <script type="text/javascript">
+var btn = $api.byId('btn');
     apiready = function(){
+        openBMap();
+        getLocation();
+        $api.addEvt(btn, 'click', CoordFormName, false);
+    };
+
+ 
+
+    function openBMap() {
         // bmap
-        var map = api.require('bMap');
-        var baiduNavigation = api.require('baiduNavigation');
+        map = api.require('bMap');
 
         /* 百度地图打开 */
         map.open({
             rect: {
                 x: 0,
-                y: 50,
+                y: 150,
                 w: api.frameWidth,
                 h: api.frameHeight
             },
@@ -47,8 +100,10 @@
                 // 默认帝都经纬度
                 lon: 116.4021310000,
                 lat: 39.9994480000
+                // lon: longitude,
+                // lat: latitude
             },
-            zoomLevel: 10,
+            zoomLevel: 15,
             showUserLocation: true, 
             fixedOn: api.frameName,
             fixed: true
@@ -59,42 +114,46 @@
                 trackingMode: 'none'
             });
             }
-        });
+        }); 
+    }
 
-        /* 百度地图结束 */
+    // 放大视角
+    function zoomIn() {
+        map.zoomIn();
+    }
 
-        /* 导航开始 */ 
+    // 缩小视角
+    function zoomOut() {
+        map.zoomOut();
+    }
+
+    // open  Navigation
+    function openNavigation() {
+        baiduNavigation = api.require('baiduNavigation');
+   
         baiduNavigation.start({
-            start: {                            // 起点信息.
-                position: {                     // 经纬度，与address配合可为空
-                    lon: 112.47723797622677,    // 经度.
-                    lat: 34.556480000000015     // 纬度.
+            start: {                                // 起点信息.
+                position: {                         // 经纬度，与address配合可为空
+                    lon: longitude,                // 经度.
+                    lat: latitude                  // 纬度.
                 },
-                title: "中国四大石窟之一",       // 描述信息
-                address: "龙门石窟"             // 地址信息，与position配合为空
+                title: "",            // 描述信息
+                address: ""             // 地址信息，与position配合为空
             },
-            goBy: [{                            // 途经点位置信息.
-                position: {                     // 经纬度，与address配合可为空
-                    lon: 109.77539000000002,    // 经度
-                    lat: 33.43144               // 纬度.
+            end: {                                   // 终点信息.
+                position: {                         // 经纬度，与address配合可为空
+                    lon: adrLon,                 // 经度
+                    lat: adrLat                 // 纬度
                 },
-                title: "释源",                  // 描述信息
-                address: "白马寺"               // 地址信息，与position配合为空
-            }],
-            end: {                              // 终点信息.
-                position: {                     // 经纬度，与address配合可为空
-                    lon: 111.57062599999995,    // 经度
-                    lat: 33.784214              // 纬度
-                },
-                title: "龙蛇之窟",               // 描述信息
-                address: "鸡冠洞"               // 地址信息，与position配合为空
+                title: "",                  // 描述信息
+                address: ""               // 地址信息，与position配合为空
             }
         }, function(ret, err) {
             if (ret.status) {
-                api.alert({
-                    title: "提示",
-                    msg: '导航成功'
-                });
+                // api.alert({
+                //     title: "提示",
+                //     msg: '导航成功'
+                // });
             } else {
                 var msg = "未知错误";
                 if (1 == err.code) {
@@ -118,13 +177,41 @@
                 });
             }
         });
+    }
+
+    // 获取当前位置的经纬度
+    function getLocation(par) {
+        map.getLocation({
+            accuracy: '100m',
+            autoStop: true,
+            filter: 1
+            }, function(ret, err) {
+            if (ret.status) {
+                longitude = ret.lon;
+                latitude  = ret.lat;
+            } else {
+                alert(err.code);3
 
 
-        /* 导航结束 */
-     
+            }
+        });
+    }
 
-     
-       
-    };
+    // address tran lon&lat
+    function CoordFormName() {
+        var endDestin = $api.byId('end');
+        var endAdr = $api.val(endDestin);
+        map.getCoordsFromName({
+        city: '',
+        address: endAdr 
+        }, function(ret, err) {
+        if (ret.status) {
+            adrLon = ret.lon;
+            adrLat = ret.lat;
+            alert('经度:' + adrLon + '\n' + '纬度:' + adrLat + 'goord');
+            openNavigation();
+        }
+        });
+    }
 </script>
 </html>
